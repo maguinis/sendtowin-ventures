@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SendtoWin Ventures</title>
+<meta name="description" content="SendtoWin Ventures is a seed-stage venture fund investing in early-stage B2B companies.">
+<link rel="icon" href="data:,">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root{
+    --white:#ffffff;
+    --paper:#f6f8fc;
+    --paper-line:#e3e7f4;
+    --navy:#12163c;
+    --navy-800:#1b2050;
+    --ink:#171b3f;
+    --ink-soft:#5a5f80;
+    --blue:#2e56e8;
+    --blue-deep:#1e3cb8;
+    --blue-tint:#eaf0ff;
+    --font-head:'Sora', -apple-system, 'Segoe UI', sans-serif;
+    --font-body:'Public Sans', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:'IBM Plex Mono', 'SF Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--blue); color:#fff;}
+
+  h1,h2,h3{
+    font-family:var(--font-head);
+    margin:0;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+
+  .container{
+    max-width:71rem;
+    margin:0 auto;
+    padding-inline:clamp(1.5rem,4vw,3rem);
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    font-weight:600;
+    letter-spacing:0.13em;
+    text-transform:uppercase;
+    color:var(--blue-deep);
+  }
+
+  /* ---------- LOGO ---------- */
+  .logo{
+    display:inline-flex;
+    align-items:center;
+    gap:0.55rem;
+  }
+  .logo-mark{
+    width:1.9rem;
+    height:1.9rem;
+    border-radius:7px;
+    background:var(--blue);
+    flex:none;
+  }
+  .logo-word{
+    font-family:var(--font-head);
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .logo-word b{font-weight:800;}
+  .logo-word .sep{
+    font-weight:400;
+    color:var(--ink-soft);
+    margin:0 0.4em;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:saturate(1.2) blur(8px);
+    border-bottom:1px solid var(--paper-line);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1.5rem;
+    padding-block:0.9rem;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:clamp(1.1rem,2.5vw,2rem);
+  }
+  .nav-links a{
+    font-size:0.9rem;
+    font-weight:600;
+    color:var(--ink-soft);
+    transition:color .15s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--ink);}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:0.88rem;
+    padding:0.65rem 1.2rem;
+    border-radius:9px;
+    background:var(--blue);
+    color:#fff;
+    box-shadow:0 1px 2px rgba(20,30,80,0.08);
+    transition:background .15s ease, transform .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover, .btn:focus-visible{background:var(--blue-deep);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--paper-line);
+    box-shadow:none;
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible{background:var(--paper);}
+  @media (max-width:44rem){
+    .nav-links{display:none;}
+  }
+
+  .fade-up{animation:fadeUp .6s cubic-bezier(.22,.61,.36,1) both;}
+  .fade-up.d1{animation-delay:.07s;}
+  .fade-up.d2{animation-delay:.14s;}
+  .fade-up.d3{animation-delay:.21s;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion: reduce){.fade-up{animation:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-top:clamp(3rem,7vw,4.5rem);
+    padding-bottom:clamp(2.5rem,6vw,3.5rem);
+    background:
+      radial-gradient(60% 55% at 82% 8%, var(--blue-tint) 0%, rgba(234,240,255,0) 70%),
+      var(--white);
+  }
+  .hero-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    padding:0.4rem 0.8rem;
+    border-radius:100px;
+    background:var(--blue-tint);
+    color:var(--blue-deep);
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.05em;
+  }
+  .hero h1{
+    margin-top:1.25rem;
+    font-size:clamp(2.3rem,4.4vw,3.6rem);
+    font-weight:700;
+    line-height:1.08;
+    max-width:20ch;
+  }
+  .hero h1 .accent{color:var(--blue);}
+  .hero .lede{
+    margin-top:1.35rem;
+    max-width:36rem;
+    font-size:1.1rem;
+    line-height:1.62;
+    color:var(--ink-soft);
+  }
+  .hero-cta{
+    margin-top:2rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.85rem;
+  }
+
+  /* ---------- STAT STRIP ---------- */
+  .stat-strip{
+    border-top:1px solid var(--paper-line);
+    border-bottom:1px solid var(--paper-line);
+    background:var(--paper);
+  }
+  .stat-strip-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--paper-line);
+  }
+  @media (max-width:44rem){
+    .stat-strip-inner{grid-template-columns:repeat(2,1fr);}
+  }
+  .stat{
+    background:var(--paper);
+    padding:1.5rem clamp(1rem,3vw,2rem);
+  }
+  .stat-num{
+    font-family:var(--font-head);
+    font-size:clamp(1.4rem,2.4vw,1.85rem);
+    font-weight:700;
+    color:var(--navy);
+    font-variant-numeric:tabular-nums;
+  }
+  .stat-label{
+    margin-top:0.3rem;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding-block:clamp(3.5rem,8vw,5rem);}
+  .section-head{max-width:38rem; margin-bottom:clamp(2rem,5vw,2.75rem);}
+  .section-head h2{
+    margin-top:0.65rem;
+    font-size:clamp(1.6rem,3vw,2.15rem);
+    font-weight:700;
+  }
+  .section-head p{
+    margin-top:0.85rem;
+    font-size:1.02rem;
+    line-height:1.6;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- METHOD ---------- */
+  .method-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));
+    gap:1px;
+    background:var(--paper-line);
+    border:1px solid var(--paper-line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .method-card{
+    background:var(--white);
+    padding:1.9rem 1.7rem;
+    display:flex;
+    flex-direction:column;
+    gap:0.85rem;
+  }
+  .method-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:1.9rem;
+    height:1.9rem;
+    border-radius:7px;
+    background:var(--blue-tint);
+    color:var(--blue-deep);
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    font-weight:600;
+  }
+  .method-card h3{font-size:1.1rem; font-weight:700;}
+  .method-card p{font-size:0.94rem; line-height:1.6; color:var(--ink-soft);}
+
+  /* ---------- TEAM ---------- */
+  .team-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(16.5rem,1fr));
+    gap:1.4rem;
+  }
+  .team-card{
+    background:var(--paper);
+    border:1px solid var(--paper-line);
+    border-radius:14px;
+    padding:1.9rem 1.75rem;
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+  .avatar{
+    width:3.1rem;
+    height:3.1rem;
+    border-radius:9px;
+    background:var(--navy);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:1.02rem;
+  }
+  .team-card h3{font-size:1.15rem; font-weight:700;}
+  .team-role{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    letter-spacing:0.03em;
+    color:var(--blue-deep);
+    margin-top:0.3rem;
+  }
+  .team-bio{font-size:0.92rem; line-height:1.6; color:var(--ink-soft);}
+  .team-tags{display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:auto;}
+  .tag{
+    font-family:var(--font-mono);
+    font-size:0.65rem;
+    letter-spacing:0.02em;
+    padding:0.28rem 0.55rem;
+    background:var(--white);
+    border:1px solid var(--paper-line);
+    border-radius:6px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- PLATFORM PANEL ---------- */
+  .platform-panel{
+    background:var(--paper);
+    border:1px solid var(--paper-line);
+    border-radius:20px;
+    padding:clamp(2rem,5vw,3rem);
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:clamp(2rem,5vw,3rem);
+    align-items:center;
+  }
+  @media (max-width:52rem){
+    .platform-panel{grid-template-columns:1fr;}
+  }
+  .platform-copy .logo{margin-bottom:1.1rem;}
+  .platform-copy h2{font-size:clamp(1.5rem,2.8vw,1.9rem); font-weight:700;}
+  .platform-copy p{margin-top:0.9rem; font-size:1rem; line-height:1.62; color:var(--ink-soft); max-width:32rem;}
+  .platform-copy .btn{margin-top:1.4rem;}
+  .platform-stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:var(--paper-line);
+    border:1px solid var(--paper-line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .platform-stats .stat{background:var(--white);}
+
+  /* ---------- FOCUS ---------- */
+  .stage-row{display:flex; flex-wrap:wrap; gap:0.65rem; margin-bottom:2.25rem;}
+  .stage-chip{
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    letter-spacing:0.02em;
+    padding:0.5rem 0.95rem;
+    border-radius:8px;
+    background:var(--blue-tint);
+    color:var(--blue-deep);
+    font-weight:600;
+  }
+  .focus-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(14.5rem,1fr));
+    gap:1.4rem;
+  }
+  .focus-card{
+    padding:1.4rem 1.5rem;
+    background:var(--paper);
+    border:1px solid var(--paper-line);
+    border-radius:12px;
+  }
+  .focus-card h3{font-size:1rem; font-weight:700; line-height:1.4;}
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:var(--blue-tint);
+    border-radius:24px;
+  }
+  .closing-inner{
+    padding:clamp(2.5rem,6vw,4rem);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.25rem;
+  }
+  .closing h2{
+    font-size:clamp(1.7rem,3.4vw,2.35rem);
+    font-weight:700;
+    max-width:22ch;
+  }
+  .closing p{
+    font-size:1.02rem;
+    color:var(--ink-soft);
+    max-width:32rem;
+    line-height:1.6;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy);
+    color:#c9cde6;
+  }
+  .footer-inner{
+    padding-block:2rem;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:1.25rem;
+  }
+  footer .logo-word{color:#fff;}
+  footer .logo-word .sep{color:#7c81ab;}
+  .footer-copy{font-size:0.78rem; color:#9297bc;}
+  .legal{
+    border-top:1px solid var(--navy-800);
+    padding-block:1.25rem;
+    font-size:0.76rem;
+    line-height:1.6;
+    color:#8388ae;
+    max-width:52rem;
+  }
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--blue); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <span class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-word"><b>SendtoWin</b><span class="sep">/</span>Ventures</span>
+    </span>
+    <nav class="nav-links">
+      <a href="#thesis">Thesis</a>
+      <a href="#team">Team</a>
+      <a href="#platform">Platform</a>
+      <a href="#focus">Focus</a>
+    </nav>
+    <a class="btn" href="https://www.sendtowin.com" target="_blank" rel="noopener">Visit SendtoWin</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="container">
+    <span class="hero-tag fade-up">Early-stage venture</span>
+    <h1 class="fade-up d1">We invest where the <span class="accent">signal</span> shows up before the pitch does.</h1>
+    <p class="lede fade-up d2">A seed-stage venture fund built by the operators who run outbound sales for hundreds of early-stage B2B companies, and see who's breaking out months before anyone raises a round.</p>
+    <div class="hero-cta fade-up d3">
+      <a class="btn" href="#thesis">See how we invest</a>
+      <a class="btn btn-ghost" href="#team">Meet the team</a>
+    </div>
+  </div>
+</div>
+
+<div class="stat-strip">
+  <div class="container" style="padding-inline:0;">
+    <div class="stat-strip-inner">
+      <div class="stat"><div class="stat-num">#254</div><div class="stat-label">2026 Inc. 5000 ranking</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">B2B startups served</div></div>
+      <div class="stat"><div class="stat-num">$380M+</div><div class="stat-label">client revenue attributed</div></div>
+      <div class="stat"><div class="stat-num">10+ yrs</div><div class="stat-label">building together</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="thesis">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">How we see it</div>
+      <h2>Every investor reads the pitch. We watch the pipeline.</h2>
+      <p>Most investors meet a company for the first time when it starts raising. We meet founders when they start selling, because SendtoWin is already running their outbound.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <span class="method-num">01</span>
+        <h3>Run the pipeline</h3>
+        <p>SendtoWin operates outbound (cold email, LinkedIn, calling) for a large, active roster of early-stage B2B companies, instrumented from day one, in their own systems.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">02</span>
+        <h3>Read the signal</h3>
+        <p>Reply rates, meetings booked, and meeting-to-opportunity conversion give us a live, comparable read on demand: the same playbook, measured the same way, across every company.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">03</span>
+        <h3>Spot the outliers</h3>
+        <p>Set against peers in the same stage and sector, the companies with real pull stand out, often months before their metrics ever reach a data room.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num">04</span>
+        <h3>Move early</h3>
+        <p>We back the outliers we see directly, and we track the rest of the field so we recognize the next one as soon as the signal turns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team" style="background:var(--paper); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Who we are</div>
+      <h2>Founders, operators, and investors</h2>
+      <p>We've been building, selling, and investing together for over a decade.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="avatar">MI</div>
+        <div>
+          <h3>Michelle Aguinis</h3>
+          <div class="team-role">General Partner · ex-Menlo Ventures</div>
+        </div>
+        <p class="team-bio">Seven years investing at Menlo Ventures across seed and early stage, evaluating over 1,000 companies. Previously BCG. Stanford MBA. Forbes 30 Under 30.</p>
+        <div class="team-tags">
+          <span class="tag">Menlo Ventures</span>
+          <span class="tag">BCG</span>
+          <span class="tag">Stanford MBA</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="avatar">MA</div>
+        <div>
+          <h3>Martin Aguinis</h3>
+          <div class="team-role">General Partner · Co-founder, SendtoWin</div>
+        </div>
+        <p class="team-bio">Led global marketing at Google, growing Flutter from zero to 2M+ users. Founded and sold a SaaS video company to Tata Group. Stanford MBA. Forbes 30 Under 30.</p>
+        <div class="team-tags">
+          <span class="tag">Google</span>
+          <span class="tag">Stanford MBA</span>
+          <span class="tag">Founder</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="avatar">SS</div>
+        <div>
+          <h3>Sam Shandler</h3>
+          <div class="team-role">General Partner · Co-founder, SendtoWin</div>
+        </div>
+        <p class="team-bio">Top 1% account executive at Google, Oracle, and Databricks before co-founding SendtoWin and building its sales engine across hundreds of B2B clients.</p>
+        <div class="team-tags">
+          <span class="tag">Google</span>
+          <span class="tag">Databricks</span>
+          <span class="tag">Oracle</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="container">
+    <div class="platform-panel">
+      <div class="platform-copy">
+        <span class="logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-word"><b>SendtoWin</b></span>
+        </span>
+        <h2>The fund sits on top of a real, running growth engine.</h2>
+        <p>SendtoWin is a B2B sales platform ranked #254 on the 2026 Inc. 5000 list of America's fastest-growing private companies. It's the same pipeline, relationships, and demand data that SendtoWin Ventures draws on.</p>
+        <a class="btn" href="https://www.sendtowin.com" target="_blank" rel="noopener">Learn about the platform</a>
+      </div>
+      <div class="platform-stats">
+        <div class="stat"><div class="stat-num">#254</div><div class="stat-label">Inc. 5000 ranking</div></div>
+        <div class="stat"><div class="stat-num">500+</div><div class="stat-label">startups served</div></div>
+        <div class="stat"><div class="stat-num">$380M+</div><div class="stat-label">revenue attributed</div></div>
+        <div class="stat"><div class="stat-num">2024</div><div class="stat-label">Apollo Partner of the Year</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="focus" style="background:var(--paper); border-top:1px solid var(--paper-line); border-bottom:1px solid var(--paper-line);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Where we play</div>
+      <h2>Concentrated, early, and inside our own lane.</h2>
+      <p>We invest at the stage where the revenue motion is still the open question, and stay inside categories where our own client base gives us a real read on demand.</p>
+    </div>
+    <div class="stage-row">
+      <span class="stage-chip">Pre-Seed</span>
+      <span class="stage-chip">Seed</span>
+      <span class="stage-chip">Series A</span>
+    </div>
+    <div class="focus-grid">
+      <div class="focus-card"><h3>AI applications, dev tools &amp; cybersecurity</h3></div>
+      <div class="focus-card"><h3>Fintech &amp; financial infrastructure</h3></div>
+      <div class="focus-card"><h3>Healthcare operations &amp; data</h3></div>
+      <div class="focus-card"><h3>Supply chain, logistics &amp; industrials</h3></div>
+      <div class="focus-card"><h3>Vertical SaaS &amp; professional services</h3></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="closing">
+      <div class="closing-inner">
+        <h2>Building something with outlier demand?</h2>
+        <p>If your metrics are turning before your fundraising narrative catches up, we'd like to hear about it.</p>
+        <a class="btn" href="https://www.sendtowin.com" target="_blank" rel="noopener">Get in touch through SendtoWin</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-word"><b>SendtoWin</b><span class="sep">/</span>Ventures</span>
+    </span>
+    <span class="footer-copy">© 2026 SendtoWin Ventures</span>
+  </div>
+  <div class="container">
+    <p class="legal">SendtoWin Ventures is a venture capital investment vehicle. This site is provided for general informational purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any security. Any such offer or solicitation will be made only pursuant to definitive offering documents provided to qualified investors.</p>
+  </div>
+</footer>
+
+</body>
+</html>
